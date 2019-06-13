@@ -20,14 +20,14 @@ public class Model {
     private void newGame() {
         entities = new ArrayList<>();
         createWorld();
-//        populateWorld();
+        populateWorld();
         runGame();
     }
 
     private void createWorld() {
-        WorldCreator worldCreator = new WorldCreator(50);
-        world = worldCreator.createWorldFromFile("maps/map1.txt");
-        
+        WorldCreator worldCreator = new WorldCreator(40);
+//        world = worldCreator.loadFile("maps/map1.txt");
+        world = worldCreator.generateRandomWorld(30,30);
     }
 
     private void populateWorld() {

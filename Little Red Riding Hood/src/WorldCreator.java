@@ -10,7 +10,12 @@ public class WorldCreator {
         tileCreator = new TileCreator(tileSize);
     }
 
-    public World createWorldFromFile(String fileName) {
+    public World generateRandomWorld(int worldHeight, int worldWidth) {
+        RandomWorldGenerator randomWorldGenerator = new RandomWorldGenerator(worldHeight, worldWidth, tileCreator.getTileSize());
+        return randomWorldGenerator.generateWorld();
+    }
+
+    public World loadFile(String fileName) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(fileName));
             String[] dimensions = br.readLine().split(" ");
