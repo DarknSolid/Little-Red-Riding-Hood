@@ -46,7 +46,7 @@ public class View {
         });
     }
 
-    public void drawPath() {
+    private void drawPath() {
         try {
 
 
@@ -55,7 +55,7 @@ public class View {
             for (Tile tile : wolf.getPath()) {
                 tile.drawDot(gc);
             }
-        }catch (NullPointerException e) {
+        }catch (NullPointerException | IndexOutOfBoundsException e) {
 
         }
     }
