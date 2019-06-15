@@ -14,17 +14,20 @@ public class RandomWorldGenerator {
         this.previousWorldState = new Tile[worldHeight][worldWidth];
         this.statsOfTileType = new HashMap<>();
         this.tileCreator = new TileCreator(tileSize);
-        statsOfTileType.put(Tile.TileTypes.FOREST, new TileGenerationStats(55, 4, 5));
+        statsOfTileType.put(Tile.TileTypes.FOREST, new TileGenerationStats(55, 4, 5, 3));
+        statsOfTileType.put(Tile.TileTypes.WATER, new TileGenerationStats(25, 3, 4, 2));
 
         fillWorldWithGrass();
     }
 
     public World generateWorld() {
-        int iterations = 3;
-        fillRandomTiles(Tile.TileTypes.FOREST);
-        for (int i = 0; i < iterations; i++) {
-            boolean isLastIteration = (i == iterations - 1);
-            iterateWorld(Tile.TileTypes.FOREST, isLastIteration);
+        for (Tile.TileTypes type : statsOfTileType.keySet()) {
+            int iterations = statsOfTileType.get(type).getIterations();
+            fillRandomTiles(type);
+            for (int i = 0; i < iterations; i++) {
+                boolean isLastIteration = (i == iterations - 1);
+                iterateWorld(type, isLastIteration);
+            }
         }
         return new World(world);
     }

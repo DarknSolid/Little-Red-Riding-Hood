@@ -1,11 +1,12 @@
 public class TileGenerationStats {
     private int spawnChance,
-            surviveConditionAmount, spawnConditionAmount;
+            surviveConditionAmount, spawnConditionAmount, iterations;
 
-    public TileGenerationStats(int spawnChance, int surviveConditionAmount, int spawnConditionAmount) {
+    public TileGenerationStats(int spawnChance, int surviveConditionAmount, int spawnConditionAmount, int iterations) {
         this.spawnChance = spawnChance;
         this.surviveConditionAmount = surviveConditionAmount;
         this.spawnConditionAmount = spawnConditionAmount;
+        this.iterations = iterations;
     }
 
     public int getSpawnChance() {
@@ -18,5 +19,9 @@ public class TileGenerationStats {
 
     public int getSpawnConditionAmount() {
         return spawnConditionAmount;
+    }
+
+    public int getIterations() {
+        return iterations;
     }
 }
