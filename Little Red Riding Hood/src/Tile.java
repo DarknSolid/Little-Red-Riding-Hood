@@ -1,4 +1,5 @@
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 public class Tile {
@@ -12,29 +13,21 @@ public class Tile {
     private int cost;
     private Color color;
     private GamePiece gamePiece;
+    private Image texture;
 
-    public Tile(int posI, int posJ, int tileSize, Color color, TileTypes tileType, int cost) {
+    public Tile(int posI, int posJ, int tileSize, Image texture, TileTypes tileType, int cost) {
         this.posI = posI;
         this.posJ = posJ;
         this.tileSize = tileSize;
-        this.color = color;
+        this.texture = texture;
         this.tileType = tileType;
         this.cost = cost;
     }
 
     public void draw(GraphicsContext gc) {
-        //Border
-        gc.setFill(Color.BLACK);
-        gc.fillRect(posJ * tileSize, posI * tileSize, tileSize, tileSize);
-
-        //Tile
-        gc.setFill(color);
-        gc.fillRect(posJ * tileSize, posI * tileSize, tileSize - 2, tileSize - 2);
-
-        //GamePiece
-        if (gamePiece != null) {
-            gamePiece.draw(gc, posJ * tileSize, posI * tileSize, tileSize);
-        }
+        gc.drawImage(texture, posJ * tileSize, posI * tileSize, tileSize, tileSize);
+        if (gamePiece == null) return;
+        gamePiece.draw(gc, posI, posJ, tileSize);
     }
 
     public void drawDot(GraphicsContext gc) {

@@ -25,9 +25,9 @@ public class Model {
     }
 
     private void createWorld() {
-        WorldCreator worldCreator = new WorldCreator(15);
+        WorldCreator worldCreator = new WorldCreator(100);
 //        world = worldCreator.loadFile("maps/map1.txt");
-        world = worldCreator.generateRandomWorld(100,100);
+        world = worldCreator.generateRandomWorld(30,30);
     }
 
     private void populateWorld() {

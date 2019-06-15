@@ -14,6 +14,7 @@ public class RandomWorldGenerator {
         this.previousWorldState = new Tile[worldHeight][worldWidth];
         this.statsOfTileType = new HashMap<>();
         this.tileCreator = new TileCreator(tileSize);
+        //TODO list in order!
         statsOfTileType.put(Tile.TileTypes.FOREST, new TileGenerationStats(55, 4, 5, 3));
         statsOfTileType.put(Tile.TileTypes.WATER, new TileGenerationStats(25, 3, 4, 2));
         statsOfTileType.put(Tile.TileTypes.ROCK, new TileGenerationStats(5, 1, 2, 1));

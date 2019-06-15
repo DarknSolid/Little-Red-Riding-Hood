@@ -1,14 +1,13 @@
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
+
 
 public class Player extends GamePiece {
 
     private long lastRegen;
 
     public Player(Color color, int moves) {
-
-        super(color, moves);
+        super(color, moves, "textures/little_red_riding_hood.png");
     }
 
     public void moveInDirection(KeyCode direction, World world) {
@@ -35,11 +34,5 @@ public class Player extends GamePiece {
             movesLeft++;
             lastRegen = System.currentTimeMillis();
         }
-    }
-
-    @Override
-    void draw(GraphicsContext gc, int centerX, int centerY, int tileSize) {
-        gc.setFill(color);
-        gc.fillOval(centerX, centerY, tileSize * .9f, tileSize * .9f);
     }
 }

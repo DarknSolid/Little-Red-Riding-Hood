@@ -1,4 +1,5 @@
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 abstract public class GamePiece {
@@ -6,10 +7,13 @@ abstract public class GamePiece {
     protected int posI, posJ;
     protected Color color;
     protected int moves, movesLeft;
+    private Image img;
 
-    public GamePiece(Color color, int moves) {
+
+    public GamePiece(Color color, int moves, String pathToTexture) {
         this.color = color;
         this.moves = moves;
+        this.img = new Image(getClass().getResourceAsStream(pathToTexture));
         movesLeft = moves;
     }
 
@@ -20,8 +24,8 @@ abstract public class GamePiece {
         movesLeft -= current.getCost();
         current = world.getTileAtPosition(iTo, jTo);
         current.setGamePiece(this);
-        posI = iTo;
-        posJ = jTo;
+        this.posI = iTo;
+        this.posJ = jTo;
 
         return true;
     }
@@ -34,7 +38,9 @@ abstract public class GamePiece {
         movesLeft = moves;
     }
 
-    abstract void draw(GraphicsContext gc, int centerX, int centerY, int tileSize);
+    public void draw(GraphicsContext gc, int centerX, int centerY, int tileSize) {
+        gc.drawImage(img, posJ*tileSize, posI * tileSize, tileSize, tileSize);
+    }
 
     public int getPosI() {
         return posI;
