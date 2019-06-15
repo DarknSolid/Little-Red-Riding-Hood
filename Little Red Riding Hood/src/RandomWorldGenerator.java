@@ -16,6 +16,7 @@ public class RandomWorldGenerator {
         this.tileCreator = new TileCreator(tileSize);
         statsOfTileType.put(Tile.TileTypes.FOREST, new TileGenerationStats(55, 4, 5, 3));
         statsOfTileType.put(Tile.TileTypes.WATER, new TileGenerationStats(25, 3, 4, 2));
+        statsOfTileType.put(Tile.TileTypes.ROCK, new TileGenerationStats(5, 1, 2, 1));
 
         fillWorldWithGrass();
     }
