@@ -1,17 +1,14 @@
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
 
 abstract public class GamePiece {
 
     protected int posI, posJ;
-    protected Color color;
     protected int moves, movesLeft;
     private Image img;
 
 
-    public GamePiece(Color color, int moves, String pathToTexture) {
-        this.color = color;
+    public GamePiece(int moves, String pathToTexture) {
         this.moves = moves;
         this.img = new Image(getClass().getResourceAsStream(pathToTexture));
         movesLeft = moves;

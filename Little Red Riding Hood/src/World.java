@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Stack;
 
 public class World {
@@ -7,6 +8,17 @@ public class World {
     public World(Tile[][] world) {
         this.world = world;
         pathFinder = new PathFinder(this);
+    }
+
+    public ArrayList<Tile> getNeighbours(Tile current) {
+        ArrayList<Tile> neighbours = new ArrayList<>();
+        int posI = current.getPosI();
+        int posJ = current.getPosJ();
+        neighbours.add(getTileAtPosition(posI - 1, posJ));
+        neighbours.add(getTileAtPosition(posI + 1, posJ));
+        neighbours.add(getTileAtPosition(posI, posJ - 1));
+        neighbours.add(getTileAtPosition(posI, posJ + 1));
+        return neighbours;
     }
 
     public Stack<Tile> getPathFromTo(int iFrom, int jFrom, int iTo, int jTo) {

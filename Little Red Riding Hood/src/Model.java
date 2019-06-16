@@ -25,20 +25,23 @@ public class Model {
     }
 
     private void createWorld() {
-        WorldCreator worldCreator = new WorldCreator(100);
+        WorldCreator worldCreator = new WorldCreator(50);
 //        world = worldCreator.loadFile("maps/map1.txt");
-        world = worldCreator.generateRandomWorld(30,30);
+        world = worldCreator.generateRandomWorld(10, 10);
     }
 
     private void populateWorld() {
-        player = new Player(Color.RED, 2);
+        player = new Player(2);
         world.spawnGamePiece(player, 0, 0);
-        Wolf wolf1 = new Wolf(player);
-        Wolf wolf2 = new Wolf(player);
+        Wolf wolf1 = new Wolf();
+        Wolf wolf2 = new Wolf();
+//        Wolf wolf3 = new Wolf();
         world.spawnGamePiece(wolf1, 9, 9);
-        world.spawnGamePiece(wolf2, 9, 8);
+        world.spawnGamePiece(wolf2, 8, 9);
+//        world.spawnGamePiece(wolf3, 7, 9);
         entities.add(wolf1);
         entities.add(wolf2);
+//        entities.add(wolf3);
     }
 
     private void runGame() {
@@ -62,7 +65,6 @@ public class Model {
         try {
             int timePrRound = 1000; //in ms
             int timeUsagePrEntity = timePrRound / entities.size(); // in ms.
-
             for (Entity entity : entities) {
 
                 int timeBetweenSteps = timeUsagePrEntity / entity.moves;
@@ -76,6 +78,7 @@ public class Model {
                 long end = System.currentTimeMillis();
                 if (end - start < timeUsagePrEntity) Thread.sleep(end - start);
                 entity.resetMovesLeft();
+                System.out.println(System.currentTimeMillis() - start);
             }
         } catch (InterruptedException e) {
             System.out.println("Thread id " + Thread.currentThread().getId() + " was interrupted");

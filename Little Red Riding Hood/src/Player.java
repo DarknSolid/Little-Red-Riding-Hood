@@ -1,13 +1,12 @@
 import javafx.scene.input.KeyCode;
-import javafx.scene.paint.Color;
 
 
 public class Player extends GamePiece {
 
     private long lastRegen;
 
-    public Player(Color color, int moves) {
-        super(color, moves, "textures/little_red_riding_hood.png");
+    public Player(int moves) {
+        super(moves, "textures/little_red_riding_hood.png");
     }
 
     public void moveInDirection(KeyCode direction, World world) {
